@@ -14,11 +14,12 @@ module.exports = function(env, argv) {
 			extensions: ['.js', '.jsx', '.ts', '.tsx'],
 			alias: {
 				src: path.resolve(__dirname, 'src'),
-				store: path.resolve(__dirname, 'store'),
 				public: path.resolve(__dirname, 'public'),
 				images: path.resolve(__dirname, 'public/images'),
 				constants: path.resolve(__dirname, 'src/constants'),
 				components: path.resolve(__dirname, 'src/components'),
+				pages: path.resolve(__dirname, 'src/pages'),
+				store: path.resolve(__dirname, 'src/store'),
 			}
 		},
 		entry: {
@@ -32,6 +33,7 @@ module.exports = function(env, argv) {
 			port: 3031,
 			hot: true,
 			open: true,
+			historyApiFallback: true
 		},
 		module: {
 			rules: [

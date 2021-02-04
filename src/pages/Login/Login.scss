@@ -1,0 +1,22 @@
+
+.login-wrap {
+	background-color: aliceblue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+
+	.container {
+		padding-bottom: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		.grid-bottom {
+			margin-top: 20px;
+		}
+	}
+
+
+}

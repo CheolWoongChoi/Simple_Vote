@@ -12,13 +12,13 @@
 		"baseUrl": ".",
 		"paths": {
 			"src/*": ["src/*"],
+			"store": ["src/store"],
+			"store/*": ["src/store/*"],
+			"pages/*": ["src/pages/*"],
 			"public/*": ["public/*"],
 			"images/*": ["public/images/*"],
 			"constants/*": ["src/constants"],
 			"components/*": ["src/components/*"],
-			"actionTypes/*": ["src/store/actionTypes/*"],
-			"actions/*": ["src/store/actions/*"],
-			"reducers/*": ["src/store/reducers/*"]
 		}
 	}
 }
