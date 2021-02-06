@@ -8,13 +8,15 @@
 
 	.container {
 		padding-bottom: 20px;
-		display: flex;
-		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		
+		.grid {
+			text-align: center;
 
-		.grid-bottom {
-			margin-top: 20px;
+			&:last-child {
+				margin-top: 20px;
+			}
 		}
 	}
 

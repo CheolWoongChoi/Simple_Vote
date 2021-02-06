@@ -9,7 +9,7 @@ const initialState: AppState = {
 
 export default function (state: AppState = initialState, action: AppAction) {
 	switch(action.type) {
-		case LOGIN:
+		case LOGIN: {
 			return {
 				...state,
 				user: {
@@ -18,6 +18,7 @@ export default function (state: AppState = initialState, action: AppAction) {
 					isLogin: true
 				}
 			}
+		}
 		default:
 			return state;
 	}

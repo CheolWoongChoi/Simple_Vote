@@ -9,17 +9,12 @@ import styles from './App.scss';
 const cx = classNames.bind(styles);
 
 function App() {
-	const [isLogin, setLogin] = useState(false);
-
-	useEffect(() => {
-		console.log('setLogin');
-		setLogin(true);
-	}, []);
-
+	const isLogin = sessionStorage.getItem('authUser');	
+	
 	return (
 		<BrowserRouter>
 			<Switch>
-				{false ? (
+				{isLogin ? (
 					<Route exact to='/' component={Main} />
 					) : (
 					<Route exact to='/' component={Login} /> 

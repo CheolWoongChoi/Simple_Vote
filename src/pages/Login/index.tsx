@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Container, Grid, Button, TextField } from '@material-ui/core';
-import { login } from 'store/app';
+import { Grid, Button, TextField } from '@material-ui/core';
+import { loginThunk } from 'store/app';
 import styles from './Login.scss';
 import classNames from 'classnames/bind';
 
@@ -22,22 +22,22 @@ function Login() {
 			return;
 		}
 
-		dispatch(login(id));
+		dispatch(loginThunk(id));
 		history.push('/main');
 	}
 
 	return (
 		<main className={cx('login-wrap')}>
-			<Container className={cx('container')}>
-				<Grid>
-					<TextField label='아이디 입력' value={id} onChange={handleId} />
+			<Grid container className={cx('container')}>
+				<Grid item xs={12} className={cx('grid')}>
+					<TextField label='닉네임(ID) 입력' value={id} onChange={handleId} />
 				</Grid>
-				<Grid className={cx('grid-bottom')}>
+				<Grid item xs={12} className={cx('grid', 'grid-bottom')}>
 					<Button variant='contained' color='primary' onClick={handleLogin}>
 						투표방 입장하기
 					</Button>
 				</Grid>
-			</Container>
+			</Grid>
 		</main>
 	);
 }
