@@ -1,0 +1,25 @@
+
+.vote-wrap {
+	margin: 30px;
+	padding: 40px;
+	text-align: center;
+
+	.title {
+		width: 100%;
+	}
+
+	.is-single-text, .is-multi-text {
+		margin-top: 10px;
+		text-align: right;
+		font-weight: bold;
+	}
+
+	.radio-group {
+		margin-top: 30px;
+	}
+
+	.btn-wrap {
+		margin-top: 40px;
+		text-align: center;
+	}
+}

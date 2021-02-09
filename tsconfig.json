@@ -15,10 +15,10 @@
 			"store": ["src/store"],
 			"store/*": ["src/store/*"],
 			"pages/*": ["src/pages/*"],
-			"public/*": ["public/*"],
-			"images/*": ["public/images/*"],
 			"constants/*": ["src/constants"],
 			"components/*": ["src/components/*"],
+			"public/*": ["public/*"],
+			"images/*": ["public/images/*"],
 		}
 	}
 }

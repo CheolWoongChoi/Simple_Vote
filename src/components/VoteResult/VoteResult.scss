@@ -1,0 +1,34 @@
+
+.vote-wrap {
+	margin: 30px;
+	padding: 40px;
+
+	.title {
+		width: 100%;
+	}
+
+	.voters {
+		margin-top: 20px;
+	}
+
+	.result {
+		margin-top: 40px;
+	}
+
+	.list-wrap {
+		.list-item {
+			.title {
+				font-weight: bold;
+			}
+
+			.count {
+				text-align: right;
+			}
+		}
+	}
+
+	.btn-wrap {
+		margin-top: 30px;
+		text-align: center;
+	}
+}

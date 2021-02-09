@@ -1,10 +1,20 @@
 
-import { AppState, AppAction } from './types';
-import { LOGIN } from './actions';
+import { AppState, AppAction, User } from './types';
+import { 
+	LOGIN, 
+	TOGGLE_CHECK_MY_VOTE, 
+	CREATE_VOTE, 
+	HANDLE_VOTE
+} from './actions';
+import { mockVotes } from 'src/constants';
 
 const initialState: AppState = {
-	user: null,
-	votes: []
+	user: {
+		id: JSON.parse(sessionStorage.getItem('authUser') as string)?.id,
+		// myVotes: [],
+	},
+	votes: mockVotes,
+	isShowMyVote: false
 };
 
 export default function (state: AppState = initialState, action: AppAction) {
@@ -14,9 +24,25 @@ export default function (state: AppState = initialState, action: AppAction) {
 				...state,
 				user: {
 					id: action.payload,
-					myVotes: [],
-					isLogin: true
 				}
+			}
+		};
+		case TOGGLE_CHECK_MY_VOTE: {
+			return {
+				...state,
+				isShowMyVote: action.payload
+			}
+		}
+		case CREATE_VOTE: {
+			return {
+				...state,
+				votes: [...state.votes, action.payload]
+			}
+		}
+		case HANDLE_VOTE: {
+			return {
+				...state,
+				votes: action.payload
 			}
 		}
 		default:

@@ -1,0 +1,39 @@
+
+.vote-wrap {
+	margin: 30px;
+	padding: 40px;
+
+	.title {
+		width: 100%;
+	}
+
+	.creator {
+		margin-top: 20px;
+	}
+
+	.end-date {
+		margin-top: 10px;
+	}
+
+	.is-progress {
+		margin-top: 10px;
+		font-weight: bold;
+
+		&.progress {
+			color: #3f51b5;
+		}
+
+		&.end {
+			color: #dc0042;
+		}
+	}
+
+	.btn-wrap {
+		margin-top: 30px;
+		text-align: center;
+
+		button + button {
+			margin-left: 10px;
+		}
+	}
+}

@@ -1,0 +1,35 @@
+
+.container {
+	position: relative;
+	display: flex !important;
+	justify-content: center;
+	height: 100%;
+
+	.box {
+    position: fixed;
+		margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+		justify-content: center;
+    height: 100%;
+
+		a {
+			display: inline-block;			
+			text-decoration: none;
+			
+			button {
+				margin-top: 10px;
+				width: 100%;
+			}
+		}
+
+		.form {
+			margin-top: 15px;
+
+			.label {
+				margin-right: 0;
+				font-size: 1rem;
+			}
+		}
+	}
+}

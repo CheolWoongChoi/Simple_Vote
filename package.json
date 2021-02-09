@@ -12,14 +12,20 @@
   "author": "CCW",
   "license": "ISC",
   "dependencies": {
+    "@date-io/date-fns": "^1.3.13",
+    "@date-io/moment": "^1.3.13",
     "@material-ui/core": "^4.11.3",
+    "@material-ui/pickers": "^3.2.10",
     "@types/classnames": "^2.2.11",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.15",
     "@types/react-router-dom": "^5.1.7",
+    "@types/uuid": "^8.3.0",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
+    "date-fns": "^2.17.0",
+    "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
@@ -27,7 +33,8 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.3",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.13",

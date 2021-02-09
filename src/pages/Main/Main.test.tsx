@@ -17,7 +17,14 @@ describe('<Main />', () => {
 		</Provider>
 	);
 
-	it('matches snapshot', () => {
-		expect(utils.container).toMatchSnapshot();
+	it('user.id가 없다면, 로그인 화면으로 이동해야 한다.');
+
+	it('화면을 잘 띄워야 된다???', () => {
+
 	});
+
+	it('/main pathname이 되어야 한다.', () => {
+
+	});
+		
 });

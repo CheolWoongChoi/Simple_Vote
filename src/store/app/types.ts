@@ -1,13 +1,20 @@
-import { login } from './actions';
+import { 
+	login, 
+	toggleCheckMyVote,
+	createVote,
+	handleVote
+} from './actions';
 
 export type AppAction = 
 	| ReturnType<typeof login>
+	| ReturnType<typeof toggleCheckMyVote>
+	| ReturnType<typeof createVote>
+	| ReturnType<typeof handleVote>
 
 export type User = {
 	id: string | null;
-	myVotes: string[];
-	isLogin: boolean;
-} | null;
+	// myVotes: string[];
+};
 
 export type Item = {
 	itemTitle: string;
@@ -17,6 +24,7 @@ export type Item = {
 export type Vote = {
 	creatorId: string;
 	voteId: string;
+	voters: string[];
 	title: string;
 	items: Item[];
 	isMultiCheck: boolean;
@@ -27,6 +35,7 @@ export type Vote = {
 export type AppState = {
 	user: User;
 	votes: Vote[];
+	isShowMyVote: boolean;
 };
 
 

@@ -28,12 +28,17 @@ module.exports = function(env, argv) {
 		output: {
 			filename: '[name].js',
 			path: path.resolve(__dirname, 'build'),
+			publicPath: '/'
 		},
 		devServer: {
 			port: 3031,
 			hot: true,
 			open: true,
-			historyApiFallback: true
+			historyApiFallback: {
+				rewrites: [
+					{ from: /./, to: '/' }
+				]
+			}
 		},
 		module: {
 			rules: [

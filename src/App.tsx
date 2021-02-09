@@ -1,24 +1,22 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from './store';
 import Login from 'pages/Login';
 import Main from 'pages/Main';
-import classNames from 'classnames';
-import styles from './App.scss';
-
-const cx = classNames.bind(styles);
+import './App.scss';
 
 function App() {
-	const isLogin = sessionStorage.getItem('authUser');	
+	const { user } = useSelector((state: RootState) => state.app);  
 	
 	return (
 		<BrowserRouter>
 			<Switch>
-				{isLogin ? (
-					<Route exact to='/' component={Main} />
-					) : (
-					<Route exact to='/' component={Login} /> 
-				)}
+				<Route exact path='/'>
+					{user?.id ? <Redirect to='/main' /> : <Redirect to='/login' />}
+				</Route>
+				<Route path='/login' component={Login} /> 
+				<Route path='/main' component={Main} />
 				<Redirect path='*' to='/' />
 			</Switch>
 		</BrowserRouter>

@@ -10,7 +10,7 @@ module.exports = {
     '^.+\\.(ts|tsx)?$': 'ts-jest',
   },
   testMatch: [
-    '<rootDir>/**/*.test.(js|jsx|ts|tsx)',
+    '<rootDir>/**/Login/*.test.(js|jsx|ts|tsx)',
   ],
   setupFilesAfterEnv: ['./jest.setup.js'],
   snapshotResolver: '<rootDir>/jest.snapshotResolver.js'

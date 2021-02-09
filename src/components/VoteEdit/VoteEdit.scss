@@ -1,0 +1,46 @@
+
+.vote-wrap {
+	margin: 30px;
+	padding: 40px;
+
+	.form-wrap {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		input, button {
+			margin-top: 10px;
+		}
+
+		.input-title {
+			margin-bottom: 20px;
+			width: 500px;
+		}
+
+		.input-item {
+			margin-top: 10px;
+			width: 500px;
+		}
+
+		.btn-group {
+			margin-top: 10px;
+			box-shadow: none;
+		}
+
+		.radio-group {
+			margin-top: 20px;
+		}
+
+		.date-wrap {
+			margin-top: 20px;
+		}
+
+		.btn-wrap {
+			margin-top: 20px;
+			
+			button + button {
+				margin-left: 10px;
+			}
+		}
+	}
+}
