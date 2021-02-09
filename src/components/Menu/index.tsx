@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Container, Box, Button, FormGroup, FormControlLabel, Switch } from '@material-ui/core';
 import { RootState } from 'src/store';
-import { toggleCheckMyVote } from 'src/store/app';
+import { toggleCheckMyVote, logout } from 'src/store/app';
 import classNames from 'classnames/bind';
 import styles from './Menu.scss';
 
@@ -19,6 +19,15 @@ function Menu({ matchUrl }: MenuProps) {
 
 	const handleChangeSwitch = () => dispatch(toggleCheckMyVote(!isShowMyVote));
 
+	const handleLogout = () => {
+		if (!confirm('로그아웃 하시겠습니까?')) {
+			return;
+		}
+
+		sessionStorage.removeItem('authUser');
+		dispatch(logout());
+	};
+
 	return (
 		<Container className={cx('container')}>
 			<Box className={cx('box')}>
@@ -32,6 +41,14 @@ function Menu({ matchUrl }: MenuProps) {
 						투표목록 보기
 					</Button>
 				</Link>
+				<Button 
+					variant='contained' 
+					color='primary' 
+					className={cx('logout-btn')}
+					onClick={handleLogout}
+				>
+					로그아웃
+				</Button>
 				<FormGroup row className={cx('form')}>
 					<FormControlLabel
 						className={cx('label')}

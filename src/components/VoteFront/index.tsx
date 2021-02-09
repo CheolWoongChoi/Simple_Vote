@@ -28,8 +28,8 @@ function VoteFront({ vote, matchUrl }: VoteFrontProps) {
 
 	const startDateFormat = moment(startDate).format('YYYY년 MM월 DD일 A hh시 mm분');
 	const endDateFormat = moment(endDate).format('YYYY년 MM월 DD일 A hh시 mm분');
-	const isProgress = startDate < new Date() && new Date() < endDate;
-	const isWaiting = startDate > new Date();
+	const isProgress = startDate! < new Date() && new Date() < endDate!;
+	const isWaiting = startDate! > new Date();
 
 	const handleVote = () => {
 		if (voters.find(v => v === user.id)) {
@@ -38,6 +38,10 @@ function VoteFront({ vote, matchUrl }: VoteFrontProps) {
 		}
 
 		history.push(`${matchUrl}/vote/${voteId}`);
+	}
+	
+	const handleEdit = () => {
+		history.push(`${matchUrl}/edit/${voteId}`);
 	}
 
 	const handleResult = () => {
@@ -81,6 +85,15 @@ function VoteFront({ vote, matchUrl }: VoteFrontProps) {
 						onClick={handleVote}
 					>
 						투표하기
+					</Button>
+				)}
+				{user.id === creatorId && (
+					<Button
+						color='primary' 
+						variant='contained'
+						onClick={handleEdit}	
+					>
+						수정하기
 					</Button>
 				)}
 				<Button 

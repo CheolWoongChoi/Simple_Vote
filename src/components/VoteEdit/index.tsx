@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import {
 	Box,
   Paper,
@@ -17,36 +17,51 @@ import '@date-io/date-fns';
 import MomentUtils from "@date-io/moment";
 import { v4 as uuidv4 } from 'uuid';
 import { RootState } from 'src/store';
-import { Item, createVote } from 'src/store/app';
+import { Vote, Item, createVote, editVote, deleteVote } from 'src/store/app';
+import { initialVote } from 'src/constants';
 import classNames from 'classnames/bind';
 import styles from './VoteEdit.scss';
 
 const cx = classNames.bind(styles);
 
+type Params = {
+	id: string;
+}
+
 function VoteEdit() {
 	const dispatch = useDispatch();
 	const history = useHistory();
+	const match = useRouteMatch<Params>();
 
-	const [title, setTitle] = useState('');
-  const [items, setItems] = useState<Item[]>([
-		{ 
-			itemTitle: '',
-			count: 0
-		},
-		{ 
-			itemTitle: '',
-			count: 0
-		},
-		{ 
-			itemTitle: '',
-			count: 0
-		},
-	]);
-	const [multiCheck, setMuitiCheck] = useState(false);
-	const [startDate, setStartDate] = useState<Date | null>(new Date());
-	const [endDate, setEndDate] = useState<Date | null>(new Date());
-	const { user } = useSelector((state: RootState) => state.app);
+	const { user, votes } = useSelector((state: RootState) => state.app);
+	const isEdit = /\/main\/list\/edit/.test(match.url);
+	let vote: Vote;
+	let voteIdx: number;
 
+	if (isEdit) {
+		vote = votes.find(v => v.voteId === match.params.id)!;
+		voteIdx = votes.findIndex(v => v.voteId === match.params.id);
+	} else {
+		vote = initialVote;
+	}
+
+	const { 
+		creatorId: initCreatorId,
+		voteId: initVoteId,
+		voters: initVoters,
+		title: initTitle, 
+		items: initItems, 
+		isMultiCheck: initIsMultiCheck,
+		startDate: initStartDate,
+		endDate: initEndDate 
+	} = vote;
+
+	const [title, setTitle] = useState(initTitle);
+  const [items, setItems] = useState<Item[]>(initItems);
+	const [multiCheck, setMuitiCheck] = useState(initIsMultiCheck);
+	const [startDate, setStartDate] = useState<Date | null>(initStartDate);
+	const [endDate, setEndDate] = useState<Date | null>(initEndDate);
+	
 	const handleItemTitle = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>, idx: number) => {
 		items[idx].itemTitle = e.target.value;
 		setItems([...items]);
@@ -81,7 +96,7 @@ function VoteEdit() {
 		
 		dispatch(
 			createVote({
-				creatorId: user?.id as string,
+				creatorId: user.id as string,
 				voteId: `${t1}${t2}`,
 				voters: [],
 				title,
@@ -96,11 +111,65 @@ function VoteEdit() {
 		history.push('/main/list');
 	};
 
-	const modifyVote = () => {};
+	const handleEditVote = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		
+		if (!confirm('투표를 수정하시겠습니까?')) {
+			return;
+		}
+
+		if (startDate! > endDate! || endDate! < new Date()) {
+			alert('투표 기간이 올바르지 않습니다.');
+			return;
+		}
+
+		const newVotes: Vote[] = [
+			...votes.slice(0, voteIdx),
+			{
+				creatorId: initCreatorId,
+				voteId: initVoteId,
+				voters: initVoters,
+				title,
+				items,
+				isMultiCheck: multiCheck,
+				startDate,
+				endDate
+			},
+			...votes.slice(voteIdx+1, votes.length)
+		];
+
+		dispatch(
+			editVote(newVotes)
+		);
+		
+		alert('투표가 수정되었습니다.');
+		history.push('/main/list');
+	};
+
+	const handleDeleteVote = () => {
+		if (!confirm('투표를 삭제하시겠습니까?')) {
+			return;
+		}
+
+		const newVotes = [
+			...votes.slice(0, voteIdx),
+			...votes.slice(voteIdx+1, votes.length)
+		];
+
+		dispatch(
+			deleteVote(newVotes)
+		);
+
+		alert('투표가 삭제되었습니다.');
+		history.push('/main/list');
+	};
 
   return (
     <Paper elevation={3} className={cx('vote-wrap')}>
-      <form className={cx('form-wrap')} onSubmit={handleCreateVote}>
+      <form 
+				className={cx('form-wrap')} 
+				onSubmit={isEdit ? handleEditVote : handleCreateVote}
+			>
 				<TextField 
 					className={cx('input-title')} 
 					label='제목 입력' 
@@ -159,19 +228,33 @@ function VoteEdit() {
 					</MuiPickersUtilsProvider>
 				</Box>
 				<Box className={cx('btn-wrap')}>
-					<Button 
-						color='primary' 
-						variant='contained' 
-						type='submit'
-					>
-						투표 생성하기
-					</Button>
-					<Button 
-						color='primary' 
-						variant='contained'
-					>
-						투표 수정하기
-					</Button>
+					{!isEdit && (
+						<Button 
+							color='primary' 
+							variant='contained' 
+							type='submit'
+						>
+							투표 생성하기
+						</Button>
+					)}
+					{isEdit && (
+						<>
+							<Button 
+								color='primary' 
+								variant='contained'
+								type='submit'
+							>
+								투표 수정하기
+							</Button>
+							<Button 
+								color='primary' 
+								variant='contained'
+								onClick={handleDeleteVote}
+							>
+								투표 삭제하기
+							</Button>
+						</>
+					)}
 				</Box>
 			</form>
     </Paper>

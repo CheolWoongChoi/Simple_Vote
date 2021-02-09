@@ -1,3 +1,4 @@
+import { Vote } from 'store/app';
 
 export const mockVotes = [
 	{
@@ -93,3 +94,27 @@ export const mockVotes = [
 		endDate: new Date('2021-07-31T08:06:00.000Z')
 	}
 ]
+
+export const initialVote: Vote = {
+	creatorId: '',
+	voteId: '',
+	voters: [],
+	title: '',
+	items: [
+		{ 
+			itemTitle: '',
+			count: 0
+		},
+		{ 
+			itemTitle: '',
+			count: 0
+		},
+		{ 
+			itemTitle: '',
+			count: 0
+		}
+	],
+	isMultiCheck: false,
+	startDate: new Date(),
+	endDate: new Date(),
+};

@@ -30,7 +30,7 @@ function Login() {
 	}
 
 	useEffect(() => {
-		if (user?.id) {
+		if (user.id) {
 			history.push('/main');
 		}
 	}, [user]);

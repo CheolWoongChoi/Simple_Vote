@@ -6,13 +6,20 @@ import { RootState } from 'store';
 
 function Home(){
 	const match = useRouteMatch();
-	const { votes } = useSelector((state: RootState) => state.app);
-
+	const { user, votes, isShowMyVote } = useSelector((state: RootState) => state.app);
+	const myVotes = votes.filter(v => v.creatorId === user.id);
+	
 	return (
 		<div className='home-wrap'>
-			{votes.map((vote, idx) => (
-				<VoteFront key={idx} vote={vote} matchUrl={match.url} />
-			))}
+			{isShowMyVote ? (
+				myVotes.map((vote, idx) => (
+					<VoteFront key={idx} vote={vote} matchUrl={match.url} />
+				))
+			) : (
+				votes.map((vote, idx) => (
+					<VoteFront key={idx} vote={vote} matchUrl={match.url} />
+				))
+			)}
 		</div>
 	)
 }
