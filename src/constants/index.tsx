@@ -1,6 +1,10 @@
-import { Vote } from 'store/app';
+import { User, Vote } from 'store/app';
 
-export const mockVotes = [
+export const initialUser: User = {
+	id: JSON.parse(sessionStorage.getItem('authUser') as string)?.id,
+};
+
+export const defaultVotes: Vote[] = [
 	{
 		creatorId: 'A',
 		voteId: '53e74047',
@@ -94,6 +98,21 @@ export const mockVotes = [
 		endDate: new Date('2021-07-31T08:06:00.000Z')
 	}
 ]
+
+export const initializeVotes = () => {
+	const votes: Vote[] | undefined = JSON.parse(localStorage.getItem('votes') as string);
+
+	if (votes) {
+		votes.map(v => {
+			v.startDate = new Date(v.startDate!);
+			v.endDate = new Date(v.endDate!);
+		});
+
+		return votes;
+	} else {
+		return defaultVotes;
+	}
+}
 
 export const initialVote: Vote = {
 	creatorId: '',

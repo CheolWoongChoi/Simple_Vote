@@ -10,22 +10,23 @@ import {
   Button,
 	Typography
 } from '@material-ui/core';
-import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import { RootState } from 'store';
 import classNames from 'classnames/bind';
 import styles from './VoteResult.scss';
 
 const cx = classNames.bind(styles);
 
-type VoteResultProps = {
-	paramsId: string;
+type Params = {
+	id: string;
 }
 
-function VoteResult({ paramsId }: VoteResultProps) {
+function VoteResult() {
 	const history = useHistory();
+	const match = useRouteMatch<Params>();
 	const { votes } = useSelector((state: RootState) => state.app);
-	const vote = votes.find(v => v.voteId === paramsId)!;
+	const vote = votes.find(v => v.voteId === match.params.id)!;
 
 	if (!vote) {
 		alert('잘못된 접근입니다.');

@@ -22,9 +22,9 @@ export const toggleCheckMyVote = (check: boolean) => ({
 	payload: check
 });
 
-export const createVote = (vote: Vote) => ({
+export const createVote = (votes: Vote[]) => ({
 	type: CREATE_VOTE,
-	payload: vote
+	payload: votes
 });
 
 export const handleVote = (votes: Vote[]) => ({

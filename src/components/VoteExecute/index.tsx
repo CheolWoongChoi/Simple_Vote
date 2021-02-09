@@ -11,7 +11,7 @@ import {
 	Radio,
 } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import { RootState } from 'store';
 import { handleVote } from 'store/app';
 import classNames from 'classnames/bind';
@@ -19,16 +19,17 @@ import styles from './VoteExecute.scss';
 
 const cx = classNames.bind(styles);
 
-type VoteExecuteProps = {
-	paramsId: string;
+type Params = {
+	id: string;
 }
 
-function VoteExecute({ paramsId }: VoteExecuteProps) {
+function VoteExecute() {
 	const dispatch = useDispatch();
 	const history = useHistory();
+	const match = useRouteMatch<Params>();
 	const { user, votes } = useSelector((state: RootState) => state.app);
-	const vote = votes.find(v => v.voteId === paramsId)!;
-	const voteIdx = votes.findIndex(v => v.voteId === paramsId);
+	const vote = votes.find(v => v.voteId === match.params.id)!;
+	const voteIdx = votes.findIndex(v => v.voteId === match.params.id);
 
 	if (!vote) {
 		alert('잘못된 접근입니다.');
@@ -70,6 +71,7 @@ function VoteExecute({ paramsId }: VoteExecuteProps) {
 			...votes.slice(voteIdx+1, votes.length)
 		];
 
+		localStorage.setItem('votes', JSON.stringify(newVotes));
 		dispatch(handleVote(newVotes));
 
 		alert('투표를 정상적으로 진행했습니다.');

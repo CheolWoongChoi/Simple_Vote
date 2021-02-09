@@ -9,13 +9,11 @@ import {
 	EDIT_VOTE,
 	DELETE_VOTE,
 } from './actions';
-import { mockVotes } from 'src/constants';
+import { initialUser, initializeVotes } from 'src/constants';
 
 const initialState: AppState = {
-	user: {
-		id: JSON.parse(sessionStorage.getItem('authUser') as string)?.id,
-	},
-	votes: mockVotes,
+	user: initialUser,
+	votes: initializeVotes(),
 	isShowMyVote: false
 };
 
@@ -46,7 +44,7 @@ export default function (state: AppState = initialState, action: AppAction) {
 		case CREATE_VOTE: {
 			return {
 				...state,
-				votes: [...state.votes, action.payload]
+				votes: action.payload
 			}
 		};
 		case HANDLE_VOTE: {

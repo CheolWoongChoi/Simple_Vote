@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import * as moment from 'moment'; 
 import {
 	Box,
@@ -18,11 +18,11 @@ const cx = classNames.bind(styles);
 
 type VoteFrontProps = {
 	vote: Vote;
-	matchUrl: string;
 }
 
-function VoteFront({ vote, matchUrl }: VoteFrontProps) {
+function VoteFront({ vote }: VoteFrontProps) {
 	const history = useHistory();
+	const match = useRouteMatch();
 	const { user } = useSelector((state: RootState) => state.app);
 	const { creatorId, voteId, voters, title, startDate, endDate } = vote;
 
@@ -37,15 +37,15 @@ function VoteFront({ vote, matchUrl }: VoteFrontProps) {
 			return;
 		}
 
-		history.push(`${matchUrl}/vote/${voteId}`);
+		history.push(`${match.url}/vote/${voteId}`);
 	}
 	
 	const handleEdit = () => {
-		history.push(`${matchUrl}/edit/${voteId}`);
+		history.push(`${match.url}/edit/${voteId}`);
 	}
 
 	const handleResult = () => {
-		history.push(`${matchUrl}/result/${voteId}`);
+		history.push(`${match.url}/result/${voteId}`);
 	}
 
 	return (

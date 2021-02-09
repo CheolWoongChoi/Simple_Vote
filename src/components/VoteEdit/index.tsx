@@ -94,8 +94,9 @@ function VoteEdit() {
 			return;
 		}
 		
-		dispatch(
-			createVote({
+		const newVotes: Vote[] = [
+			...votes,
+			{
 				creatorId: user.id as string,
 				voteId: `${t1}${t2}`,
 				voters: [],
@@ -104,8 +105,11 @@ function VoteEdit() {
 				isMultiCheck: multiCheck,
 				startDate: startDate as Date,
 				endDate: endDate as Date
-			})
-		);
+			}
+		];
+
+		localStorage.setItem('votes', JSON.stringify(newVotes));
+		dispatch(createVote(newVotes));
 
 		alert('투표가 생성되었습니다.');
 		history.push('/main/list');
@@ -138,10 +142,9 @@ function VoteEdit() {
 			...votes.slice(voteIdx+1, votes.length)
 		];
 
-		dispatch(
-			editVote(newVotes)
-		);
-		
+		localStorage.setItem('votes', JSON.stringify(newVotes));
+		dispatch(editVote(newVotes));
+
 		alert('투표가 수정되었습니다.');
 		history.push('/main/list');
 	};
@@ -156,9 +159,8 @@ function VoteEdit() {
 			...votes.slice(voteIdx+1, votes.length)
 		];
 
-		dispatch(
-			deleteVote(newVotes)
-		);
+		localStorage.setItem('votes', JSON.stringify(newVotes));
+		dispatch(deleteVote(newVotes));
 
 		alert('투표가 삭제되었습니다.');
 		history.push('/main/list');
