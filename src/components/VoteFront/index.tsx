@@ -24,9 +24,12 @@ type VoteFrontProps = {
 function VoteFront({ vote, matchUrl }: VoteFrontProps) {
 	const history = useHistory();
 	const { user } = useSelector((state: RootState) => state.app);
-	const { creatorId, voteId, voters, title, endDate } = vote;
-	const timeFormat = moment(endDate).format('YYYY년 MM월 DD일 A hh시 mm분');
-	const isProgress = new Date() < endDate;
+	const { creatorId, voteId, voters, title, startDate, endDate } = vote;
+
+	const startDateFormat = moment(startDate).format('YYYY년 MM월 DD일 A hh시 mm분');
+	const endDateFormat = moment(endDate).format('YYYY년 MM월 DD일 A hh시 mm분');
+	const isProgress = startDate < new Date() && new Date() < endDate;
+	const isWaiting = startDate > new Date();
 
 	const handleVote = () => {
 		if (voters.find(v => v === user.id)) {
@@ -52,14 +55,23 @@ function VoteFront({ vote, matchUrl }: VoteFrontProps) {
 			<Typography className={cx('creator')} variant='h6'>
 				{`투표 생성자: ${creatorId}`}
 			</Typography>
+			<Typography className={cx('start-date')} variant='h6'>
+				{`투표 시작일: ${startDateFormat}`}
+			</Typography>
 			<Typography className={cx('end-date')} variant='h6'>
-				{`투표 종료일: ${timeFormat}`}
+				{`투표 종료일: ${endDateFormat}`}
 			</Typography>
 			<Typography 
-				className={cx('is-progress', {'progress': isProgress}, {'end': !isProgress})} 
+				className={
+					cx(
+						'is-progress', 
+						{'progress': isProgress}, 
+						{'waiting': isWaiting && !isProgress}, 
+						{'end': !isWaiting && !isProgress}
+					)} 
 				variant='h6'
 			>
-				{isProgress ? '현재 진행중' : '투표 종료'}
+				{isProgress ? '현재 진행중' : isWaiting ? '대기중' : '투표 종료'}
 			</Typography>
 			<Box className={cx('btn-wrap')}>
 				{isProgress && (

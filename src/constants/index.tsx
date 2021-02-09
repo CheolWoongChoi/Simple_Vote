@@ -1,21 +1,21 @@
 
 export const mockVotes = [
 	{
-		creatorId: 'abc',
+		creatorId: 'A',
 		voteId: '53e74047',
 		voters: [],
-		title: 'sa',
+		title: '테스트1: 투표 종료',
 		items: [
 			{
-				itemTitle: 'ds',
+				itemTitle: '항목1',
 				count: 0
 			},
 			{
-				itemTitle: 'asd',
+				itemTitle: '항목2',
 				count: 0
 			},
 			{
-				itemTitle: 'asd',
+				itemTitle: '항목3',
 				count: 0
 			}
 		],
@@ -24,21 +24,21 @@ export const mockVotes = [
 		endDate: new Date('2021-02-05T10:48:00.000Z')
 	},
 	{
-		creatorId: 'bcd',
+		creatorId: 'B',
 		voteId: '43a24912',
 		voters: [],
-		title: '테스트2',
+		title: '테스트2: 투표중',
 		items: [
 			{
-				itemTitle: '1',
+				itemTitle: '항목1',
 				count: 0
 			},
 			{
-				itemTitle: '2',
+				itemTitle: '항목2',
 				count: 0
 			},
 			{
-				itemTitle: '3',
+				itemTitle: '항목3',
 				count: 0
 			}
 		],
@@ -47,26 +47,49 @@ export const mockVotes = [
 		endDate: new Date('2021-02-20T10:48:00.000Z')
 	},
 	{
-		creatorId: 'sdfsdf',
+		creatorId: 'C',
 		voteId: 'c8004ce1',
 		voters: [],
-		title: '복수투표 테스트',
+		title: '테스트3: 복수투표',
 		items: [
 			{
-				itemTitle: '123',
+				itemTitle: '항목1',
 				count: 0
 			},
 			{
-				itemTitle: '123123',
+				itemTitle: '항목2',
 				count: 0
 			},
 			{
-				itemTitle: '123',
+				itemTitle: '항목3',
 				count: 0
 			}
 		],
 		isMultiCheck: true,
 		startDate: new Date('2021-02-08T14:35:20.930Z'),
 		endDate: new Date('2021-02-27T14:35:00.000Z')
+	},
+	{
+		creatorId: 'D',
+		voteId: 'aaaf422e',
+		voters: [],
+		title: '테스트4: 대기중인 투표',
+		items: [
+			{
+				itemTitle: '항목 1',
+				count: 0
+			},
+			{
+				itemTitle: '항목 2',
+				count: 0
+			},
+			{
+				itemTitle: '항목 3',
+				count: 0
+			}
+		],
+		isMultiCheck: false,
+		startDate: new Date('2021-05-15T08:06:00.000Z'),
+		endDate: new Date('2021-07-31T08:06:00.000Z')
 	}
 ]

@@ -43,6 +43,7 @@ function VoteEdit() {
 		},
 	]);
 	const [multiCheck, setMuitiCheck] = useState(false);
+	const [startDate, setStartDate] = useState<Date | null>(new Date());
 	const [endDate, setEndDate] = useState<Date | null>(new Date());
 	const { user } = useSelector((state: RootState) => state.app);
 
@@ -73,8 +74,8 @@ function VoteEdit() {
 		const [t0, t1, t2, t3, t4] = uuidv4().split('-');
 		e.preventDefault();
 
-		if (endDate! < new Date()) {
-			alert('투표 종료 시간이 올바르지 않습니다.');
+		if (startDate! > endDate! || endDate! < new Date()) {
+			alert('투표 기간이 올바르지 않습니다.');
 			return;
 		}
 		
@@ -86,7 +87,7 @@ function VoteEdit() {
 				title,
 				items,
 				isMultiCheck: multiCheck,
-				startDate: new Date(),
+				startDate: startDate as Date,
 				endDate: endDate as Date
 			})
 		);
@@ -140,7 +141,16 @@ function VoteEdit() {
 				<Box className={cx('date-wrap')}>
 					<MuiPickersUtilsProvider utils={MomentUtils} locale='ko'>
 						<DateTimePicker
-							label='기간 설정'
+							className={cx('start-date')}
+							label='시작일'
+							disablePast
+							value={startDate}
+							onChange={setStartDate}
+							showTodayButton
+						/>
+						<DateTimePicker
+							className={cx('end-date')}
+							label='종료일'
 							disablePast
 							value={endDate}
 							onChange={setEndDate}

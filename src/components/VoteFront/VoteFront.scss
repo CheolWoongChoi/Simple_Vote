@@ -11,7 +11,7 @@
 		margin-top: 20px;
 	}
 
-	.end-date {
+	.start-date, .end-date {
 		margin-top: 10px;
 	}
 
@@ -21,6 +21,10 @@
 
 		&.progress {
 			color: #3f51b5;
+		}
+
+		&.waiting {
+			color: #4caf50;
 		}
 
 		&.end {
