@@ -30,6 +30,7 @@ module.exports = function(env, argv) {
 			path: path.resolve(__dirname, 'build'),
 			publicPath: '/'
 		},
+		devtool: 'source-map',
 		devServer: {
 			port: 3031,
 			hot: true,
@@ -98,11 +99,11 @@ module.exports = function(env, argv) {
 				filename: '[name].css',
 				chunkFilename: '[id].css'
 			}),
-			new CopyWebpackPlugin({
-				patterns: [
-					{ from: 'public', to: 'public' }
-				]
-			})
+			// new CopyWebpackPlugin({
+			// 	patterns: [
+			// 		{ from: 'public', to: 'public' }
+			// 	]
+			// })
 		]
 	}
 }

@@ -9,5 +9,5 @@ package-lock.json
 firebase.json
 
 # 테스트
-*.test.tsx
-**/__snapshots__
+/src/**/*.test.tsx
+/src/**/__snapshots__

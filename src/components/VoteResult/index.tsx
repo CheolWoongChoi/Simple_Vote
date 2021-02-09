@@ -57,13 +57,13 @@ function VoteResult() {
 			<List component='nav' className={cx('list-wrap')}>
 				<Divider />
 				{items.map((v, idx) => (
-					<>
-						<ListItem key={idx} className={cx('list-item')}>
+					<React.Fragment key={idx}>
+						<ListItem className={cx('list-item')}>
 							<ListItemText primary={v.itemTitle} className={cx('title')} />
 							<ListItemText primary={v.count} className={cx('count')} />
 						</ListItem>
 						<Divider />
-					</>
+					</React.Fragment>
 				))}
 			</List>
 			<Box className={cx('btn-wrap')}>

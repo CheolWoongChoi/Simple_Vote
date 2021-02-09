@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ChangeEvent, KeyboardEvent } from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -17,7 +18,7 @@ function Login() {
 	const dispatch = useDispatch();
 	const [id, setId] = useState('');
 
-	const handleId = (e: any) => setId(e.target.value);
+	const handleId = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => setId(e.target.value);
 
 	const handleLogin = () => {
 		if(!id) {
@@ -27,6 +28,12 @@ function Login() {
 
 		dispatch(loginThunk(id));
 		history.push('/main');
+	}
+
+	const handleKeyPress = (e: KeyboardEvent<HTMLDivElement>) => {
+		if (e.key === 'Enter') {
+			handleLogin();
+		}
 	}
 
 	useEffect(() => {
@@ -39,7 +46,12 @@ function Login() {
 		<main className={cx('login-wrap')}>
 			<Grid container className={cx('container')}>
 				<Grid item xs={12} className={cx('grid')}>
-					<TextField placeholder={'닉네임(ID) 입력'} value={id} onChange={handleId} />
+					<TextField 
+						placeholder='닉네임(ID) 입력' 
+						value={id} 
+						onChange={handleId} 
+						onKeyPress={handleKeyPress}
+					/>
 				</Grid>
 				<Grid item xs={12} className={cx('grid', 'grid-bottom')}>
 					<Button variant='contained' color='primary' onClick={handleLogin}>
