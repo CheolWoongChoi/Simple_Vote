@@ -39,7 +39,6 @@ npm test : 테스트 파일을 실행합니다.
 - Material-UI
 - Sass
 - CSS-Module
-- PostCSS (autoprefixer)
 
 <br />
 
