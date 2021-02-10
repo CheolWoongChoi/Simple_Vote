@@ -1,6 +1,7 @@
 module.exports = {
   moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'json'],
-  moduleDirectories: ['src', 'node_modules'],  
+  modulePaths: ['<rootDir>'],
+  moduleDirectories: ['node_modules', 'src'],  
   moduleNameMapper: {
     '^.+\\.(css|less|scss)$': 'babel-jest'
   },
@@ -10,7 +11,7 @@ module.exports = {
     '^.+\\.(ts|tsx)?$': 'ts-jest',
   },
   testMatch: [
-    '<rootDir>/**/Login/*.test.(js|jsx|ts|tsx)',
+    '<rootDir>/**/*.test.(js|jsx|ts|tsx)',
   ],
   setupFilesAfterEnv: ['./jest.setup.js'],
   snapshotResolver: '<rootDir>/jest.snapshotResolver.js'
