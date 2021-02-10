@@ -58,7 +58,7 @@ module.exports = function(env, argv) {
 						{
 							loader: 'css-loader',
 							options: { 
-								importLoaders: 1,
+								importLoaders: 2,
 								modules: {
 									localIdentName: '[hash:base64:5]'
 								},
