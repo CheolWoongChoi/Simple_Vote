@@ -37,16 +37,16 @@ npm test : 테스트 파일을 실행합니다.
 ### 화면(pages) 설명
 - Login : 로그인
 - Main : 메인
-  - Add : 투표 생성
-  - List : 투표 목록
-    - Home : 투표 목록 홈
-    - Edit : 투표 수정
+  - Add : 투표생성
+  - List : 투표목록
+    - Home : 투표목록 홈
+    - Edit : 투표수정
     - Vote : 투표하기
     - Result : 투표결과 
 <br />
 
 ### 컴포넌트(components) 설명
-- VoteEdit : 투표생성/수정 화면에서 투표를 생성/수정할 때 사용
+- VoteEdit : 투표 생성/수정 화면에서 투표를 생성/수정할 때 사용
 - VoteExecute : 투표하기 화면에서 투표를 진행할 때 사용 
 - VoteFront : 목록 화면에서 각 투표의 정보를 보여줌
 - VoteResult : 결과 화면에서 투표결과를 보여줌
