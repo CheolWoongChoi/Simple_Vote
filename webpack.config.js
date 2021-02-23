@@ -2,7 +2,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = function(env, argv) {
@@ -20,6 +20,7 @@ module.exports = function(env, argv) {
 				components: path.resolve(__dirname, 'src/components'),
 				pages: path.resolve(__dirname, 'src/pages'),
 				store: path.resolve(__dirname, 'src/store'),
+				hooks: path.resolve(__dirname, 'src/hooks'),
 			}
 		},
 		entry: {

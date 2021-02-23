@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import {
@@ -19,6 +19,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { RootState } from 'src/store';
 import { Vote, Item, createVote, editVote, deleteVote } from 'src/store/app';
 import { initialVote } from 'src/constants';
+import useInputs from 'hooks/useInputs';
 import classNames from 'classnames/bind';
 import styles from './VoteEdit.scss';
 
@@ -56,6 +57,7 @@ function VoteEdit() {
     endDate: initEndDate,
   } = vote;
 
+  const [form, onChangeForm, resetForm] = useInputs({ title: '' });
   const [title, setTitle] = useState(initTitle);
   const [items, setItems] = useState<Item[]>(initItems);
   const [multiCheck, setMuitiCheck] = useState(initIsMultiCheck);
@@ -70,23 +72,23 @@ function VoteEdit() {
     setItems([...items]);
   };
 
-  const increaseItem = () => {
+  const increaseItem = useCallback(() => {
     if (items.length === 7) {
       alert('항목을 7개까지 추가할 수 있습니다.');
       return;
     }
 
     setItems((items) => items.concat({ itemTitle: '', count: 0 }));
-  };
+  }, [items]);
 
-  const decreaseItem = () => {
+  const decreaseItem = useCallback(() => {
     if (items.length === 3) {
       alert('항목은 최소 3개는 있어야 합니다.');
       return;
     }
 
     setItems((items) => items.slice(0, items.length - 1));
-  };
+  }, [items]);
 
   const handleCreateVote = (e: React.FormEvent<HTMLFormElement>) => {
     const [t0, t1, t2, t3, t4] = uuidv4().split('-');
@@ -176,13 +178,13 @@ function VoteEdit() {
         onSubmit={isEdit ? handleEditVote : handleCreateVote}
       >
         <TextField
+          name='title'
           className={cx('input-title')}
           label='제목 입력'
           variant='outlined'
           multiline
           required
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={onChangeForm}
         />
         {items.map((v, i) => (
           <TextField
