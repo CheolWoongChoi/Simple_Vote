@@ -35,10 +35,13 @@ npm test : 테스트 파일을 실행합니다.
 - TypeScript
 - React (Hooks)
 - Redux
-- Redux-thunk
+- Redux-Thunk
+- Redux-Saga
 - Material-UI
 - Sass
 - CSS-Module
+- classnames
+- uuid
 
 <br />
 
