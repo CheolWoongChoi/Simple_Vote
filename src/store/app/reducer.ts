@@ -2,6 +2,8 @@
 import { AppState, AppAction } from './types';
 import { 
 	LOGIN, 
+	LOGIN_SUCCESS,
+	LOGIN_FAILURE,
 	LOGOUT,
 	TOGGLE_CHECK_MY_VOTE, 
 	CREATE_VOTE, 
@@ -12,9 +14,11 @@ import {
 import { initialUser, initializeVotes } from '@constants';
 
 const initialState: AppState = {
+	loading: false,
 	user: initialUser,
 	votes: initializeVotes(),
-	isShowMyVote: false
+	isShowMyVote: false,
+	errorDesc: '',
 };
 
 export default function (state: AppState = initialState, action: AppAction) {
@@ -22,11 +26,25 @@ export default function (state: AppState = initialState, action: AppAction) {
 		case LOGIN: {
 			return {
 				...state,
+				loading: true,
+			}
+		}
+		case LOGIN_SUCCESS: {
+			return {
+				...state,
+				loading: false,
 				user: {
 					id: action.payload,
 				}
 			}
-		};
+		}
+		case LOGIN_FAILURE: {
+			return {
+				...state,
+				loading: false,
+				errorDesc: action.payload
+			}
+		}
 		case LOGOUT: {
 			return {
 				...state,

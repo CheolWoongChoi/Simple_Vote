@@ -100,9 +100,11 @@ describe('app in store', () => {
 
 	describe('reducer', () => {
 		const initialState = {
+			loading: false,
 			user: { id: null } as User,
 			votes: [] as Vote[],
-			isShowMyVote: false
+			isShowMyVote: false,
+			errorDesc: ''
 		};
 		let state = initialState;
 		

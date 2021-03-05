@@ -7,7 +7,7 @@ import Thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 import { CssBaseline } from '@material-ui/core';
-import rootReducer from '@src/store';
+import rootReducer, { rootSaga } from '@src/store';
 import App from '@src/App';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -23,7 +23,7 @@ const store = createStore(
 	)
 );
 
-// sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
 	<Provider store={store}>

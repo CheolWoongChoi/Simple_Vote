@@ -5,11 +5,15 @@ import {
 	createVote,
 	handleVote,
 	editVote,
-	deleteVote
+	deleteVote,
+	LOGIN_SUCCESS,
+	LOGIN_FAILURE
 } from './actions';
 
 export type AppAction = 
 	| ReturnType<typeof login>
+	| { type: typeof LOGIN_SUCCESS, payload: string }
+	| { type: typeof LOGIN_FAILURE, payload: string }
 	| ReturnType<typeof logout>
 	| ReturnType<typeof toggleCheckMyVote>
 	| ReturnType<typeof createVote>
@@ -38,9 +42,11 @@ export type Vote = {
 };
 
 export type AppState = {
+	loading: boolean;
 	user: User;
 	votes: Vote[];
 	isShowMyVote: boolean;
+	errorDesc: string;
 };
 
 

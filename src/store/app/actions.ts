@@ -1,6 +1,8 @@
 import { Vote } from '@store/app';
 
 export const LOGIN = 'LOGIN' as const;
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS' as const;
+export const LOGIN_FAILURE = 'LOGIN_FAILURE' as const;
 export const LOGOUT = 'LOGOUT' as const;
 export const TOGGLE_CHECK_MY_VOTE = 'TOGGLE_CHECK_MY_VOTE' as const; 
 export const CREATE_VOTE = 'CREATE_VOTE' as const;
@@ -41,3 +43,4 @@ export const deleteVote = (votes: Vote[]) => ({
 	type: DELETE_VOTE,
 	payload: votes
 });
+

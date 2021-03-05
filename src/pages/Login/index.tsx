@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { RootState } from '@store';
 import { Grid, Button, TextField } from '@material-ui/core';
-import { loginThunk } from '@store/app';
+import { login } from '@store/app';
 import styles from './Login.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
 function Login() {
-	const { user } = useSelector((state: RootState) => state.app);
+	const { user, loading } = useSelector((state: RootState) => state.app);
 	const history = useHistory();
 	
 	const dispatch = useDispatch();
@@ -26,7 +26,7 @@ function Login() {
 			return;
 		}
 
-		dispatch(loginThunk(id));
+		dispatch(login(id));
 		history.push('/main');
 	}
 
@@ -41,6 +41,12 @@ function Login() {
 			history.push('/main');
 		}
 	}, [user, history]);
+
+	useEffect(() => {
+		if (loading) {
+			setId('로그인 중입니다...');
+		}
+	}, [loading])
 
 	return (
 		<main className={cx('login-wrap')}>
