@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import VoteFront from 'components/VoteFront';
-import { RootState } from 'store';
+import VoteFront from '@components/VoteFront';
+import { RootState } from '@store';
 import classNames from 'classnames/bind';
 import styles from './Home.scss';
 

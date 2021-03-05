@@ -1,5 +1,5 @@
 import * as React from 'react';
-import VoteExecute from 'components/VoteExecute';
+import VoteExecute from '@components/VoteExecute';
 import classNames from 'classnames/bind';
 import styles from './Vote.scss';
 

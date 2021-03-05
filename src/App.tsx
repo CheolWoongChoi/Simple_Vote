@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { RootState } from './store';
-import Login from 'pages/Login';
-import Main from 'pages/Main';
+import { RootState } from '@store';
+import Login from '@pages/Login';
+import Main from '@pages/Main';
 import './App.scss';
 
 function App() {

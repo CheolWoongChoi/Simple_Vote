@@ -9,8 +9,8 @@ import {
 	Typography,
   Button
 } from '@material-ui/core';
-import { RootState } from 'store';
-import { Vote } from 'store/app';
+import { RootState } from '@store';
+import { Vote } from '@store/app';
 import classNames from 'classnames/bind';
 import styles from './VoteFront.scss';
 

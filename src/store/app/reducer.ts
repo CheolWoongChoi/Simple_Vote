@@ -9,7 +9,7 @@ import {
 	EDIT_VOTE,
 	DELETE_VOTE,
 } from './actions';
-import { initialUser, initializeVotes } from 'src/constants';
+import { initialUser, initializeVotes } from '@constants';
 
 const initialState: AppState = {
 	user: initialUser,

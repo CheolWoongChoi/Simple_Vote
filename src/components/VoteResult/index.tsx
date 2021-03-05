@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router-dom';
-import { RootState } from 'store';
+import { RootState } from '@store';
 import classNames from 'classnames/bind';
 import styles from './VoteResult.scss';
 

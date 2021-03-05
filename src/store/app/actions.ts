@@ -1,4 +1,4 @@
-import { Vote } from 'store/app';
+import { Vote } from '@store/app';
 
 export const LOGIN = 'LOGIN' as const;
 export const LOGOUT = 'LOGOUT' as const;

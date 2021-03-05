@@ -16,10 +16,10 @@ import { MuiPickersUtilsProvider, DateTimePicker } from '@material-ui/pickers';
 import '@date-io/date-fns';
 import MomentUtils from '@date-io/moment';
 import { v4 as uuidv4 } from 'uuid';
-import { RootState } from 'src/store';
-import { Vote, Item, createVote, editVote, deleteVote } from 'src/store/app';
-import { initialVote } from 'src/constants';
-import useInputs from 'hooks/useInputs';
+import { RootState } from '@store';
+import { Vote, Item, createVote, editVote, deleteVote } from '@store/app';
+import { initialVote } from '@constants';
+import useInputs from '@hooks/useInputs';
 import classNames from 'classnames/bind';
 import styles from './VoteEdit.scss';
 

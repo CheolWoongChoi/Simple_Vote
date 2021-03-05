@@ -11,15 +11,16 @@
 		"jsx": "react",
 		"baseUrl": ".",
 		"paths": {
-			"src/*": ["src/*"],
-			"store": ["src/store"],
-			"store/*": ["src/store/*"],
-			"pages/*": ["src/pages/*"],
-			"hooks/*": ["src/hooks/*"],
-			"constants/*": ["src/constants"],
-			"components/*": ["src/components/*"],
-			"public/*": ["public/*"],
-			"images/*": ["public/images/*"],
+			"@src/*": ["src/*"],
+			"@store": ["src/store"],
+			"@store/*": ["src/store/*"],
+			"@pages/*": ["src/pages/*"],
+			"@hooks/*": ["src/hooks/*"],
+			"@constants": ["src/constants"],
+			"@constants/*": ["src/constants/*"],
+			"@components/*": ["src/components/*"],
+			"@public/*": ["public/*"],
+			"@images/*": ["public/images/*"],
 		}
 	}
 }

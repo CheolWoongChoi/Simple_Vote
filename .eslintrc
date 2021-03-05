@@ -20,5 +20,6 @@
     "testing-library"
   ],
   "rules": {
+    "no-undef": 0
   }
 }

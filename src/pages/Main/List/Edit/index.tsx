@@ -1,5 +1,5 @@
 import * as React from 'react';
-import VoteEdit from 'components/VoteEdit';
+import VoteEdit from '@components/VoteEdit';
 import classNames from 'classnames/bind';
 import styles from './Edit.scss';
 

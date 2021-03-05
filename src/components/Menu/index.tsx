@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Container, Box, Button, FormGroup, FormControlLabel, Switch } from '@material-ui/core';
-import { RootState } from 'src/store';
-import { toggleCheckMyVote, logout } from 'src/store/app';
+import { RootState } from '@src/store';
+import { toggleCheckMyVote, logout } from '@src/store/app';
 import classNames from 'classnames/bind';
 import styles from './Menu.scss';
 

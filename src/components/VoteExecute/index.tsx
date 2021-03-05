@@ -12,8 +12,8 @@ import {
 } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router-dom';
-import { RootState } from 'store';
-import { handleVote } from 'store/app';
+import { RootState } from '@store';
+import { handleVote } from '@store/app';
 import classNames from 'classnames/bind';
 import styles from './VoteExecute.scss';
 

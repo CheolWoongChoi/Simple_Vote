@@ -1,4 +1,4 @@
-import { User, Vote } from 'store/app';
+import { User, Vote } from '@store/app';
 
 export const initialUser: User = {
 	id: JSON.parse(sessionStorage.getItem('authUser') as string)?.id,

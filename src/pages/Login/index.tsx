@@ -3,9 +3,9 @@ import { ChangeEvent, KeyboardEvent } from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { RootState } from 'store';
+import { RootState } from '@store';
 import { Grid, Button, TextField } from '@material-ui/core';
-import { loginThunk } from 'store/app';
+import { loginThunk } from '@store/app';
 import styles from './Login.scss';
 import classNames from 'classnames/bind';
 
@@ -40,7 +40,7 @@ function Login() {
 		if (user.id) {
 			history.push('/main');
 		}
-	}, [user]);
+	}, [user, history]);
 
 	return (
 		<main className={cx('login-wrap')}>

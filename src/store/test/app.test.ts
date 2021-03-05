@@ -13,8 +13,8 @@ import {
 	handleVote,
 	editVote,
 	deleteVote
-} from 'store/app/actions';
-import { default as appReducer, User, Vote } from 'store/app';
+} from '@store/app/actions';
+import { default as appReducer, User, Vote } from '@store/app';
 
 describe('app in store', () => {
 	const mockData = {

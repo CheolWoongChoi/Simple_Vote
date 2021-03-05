@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useRouteMatch } from 'react-router-dom';
-import VoteEdit from 'components/VoteEdit';
+import VoteEdit from '@components/VoteEdit';
 import classNames from 'classnames/bind';
 import styles from './Add.scss';
 
